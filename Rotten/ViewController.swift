@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UITableViewController {
 
     var moviesArray:NSArray?
+    var movieCollection: [MovieModel]?
     var selectedMovieIndex:Int?
     
     override func viewDidLoad() {
@@ -114,14 +115,15 @@ class ViewController: UITableViewController {
     }
     
     func getMovieList(){
-        DataManager.getMovieList(){(movies: NSArray?) in
-            self.moviesArray = movies
+        DataManager.getMovieList(){(movies: [MovieModel]?) in
+            //self.moviesArray = movies
+            self.movieCollection = movies
             self.tableView.reloadData()
         }
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let movies = moviesArray{
+        if let movies = movieCollection{
             return movies.count
         }else{
             return 0
@@ -130,17 +132,25 @@ class ViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("com.codepath.mycell") as MovieTableCellView
-        let title = moviesArray![indexPath.row]["title"] as? String
-        let description = moviesArray![indexPath.row]["synopsis"] as? String
+        //let title = moviesArray![indexPath.row]["title"] as? String
+        //let description = moviesArray![indexPath.row]["synopsis"] as? String
         //let thumbnailUrl = moviesArray![indexpath.row]["posters"]
         
-        cell.movieTitleLabel?.text = title ?? " No title "
-        cell.movieDescription?.text = description ?? " No description. "
+        //cell.movieTitleLabel?.text = title ?? " No title "
+        //cell.movieDescription?.text = description ?? " No description. "
         
-        var URL = NSURL(string: "http://content6.flixster.com/movie/11/17/87/11178752_tmb.jpg")
-        var placeholder = UIImage(contentsOfFile: "clapper.png")
-        cell.imageView?.image = placeholder
-        cell.imageView?.setImageWithURL(URL)
+        var currentMovie = movieCollection![indexPath.row]
+        
+        cell.movieTitleLabel?.text = currentMovie.title ?? " No title "
+        cell.movieDescription?.text = currentMovie.synopsis ?? " No description "
+        
+        if let url = currentMovie.imgThumbnailUrl{
+            //var placeholder = UIImage(contentsOfFile: "clapper.png")
+            //cell.imageView?.image = placeholder
+            cell.imageView?.setImageWithURL(url)
+        }
+        //var URL = NSURL(string: "http://content6.flixster.com/movie/11/17/87/11178752_tmb.jpg")
+        
         
         return cell
     }

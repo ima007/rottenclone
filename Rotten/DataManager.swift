@@ -9,17 +9,31 @@
 import Foundation
 
 struct DataManager{
-    static let YourApiKey = "efm9t24v3b3umg9j64vpxrjc"
+    private static let YourApiKey = "efm9t24v3b3umg9j64vpxrjc"
+    private static let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=" + YourApiKey
     
-    static func getMovieList(success:(movies: NSArray?) -> Void){
-        
-        let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/movies/box_office.json?apikey=" + YourApiKey
+    private static func makeMovieRequest(finished: (dictionary: NSDictionary) -> Void){
         let request = NSMutableURLRequest(URL: NSURL(string:RottenTomatoesURLString)!)
         NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(), completionHandler:{ (response, data, error) in
             var errorValue: NSError? = nil
-            let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary
             
-            success(movies: dictionary["movies"] as NSArray?)
+            finished(dictionary: NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &errorValue) as NSDictionary);
+        })
+    }
+    
+    static func getMovieList(success:(movies: [MovieModel]) -> Void){
+        makeMovieRequest({results in
+            var allMovies: [MovieModel]?
+            allMovies <<<<* results["movies"]
+            if let allMovies = allMovies{
+                success(movies: allMovies)
+            }
+        })
+    }
+    
+    static func getMovieList(success:(movies: NSArray?) -> Void){
+        makeMovieRequest({results in
+            success(movies: results["movies"] as NSArray?)
         })
     }
 }
