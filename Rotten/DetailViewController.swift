@@ -8,66 +8,91 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
     
-    var movieDetails: NSDictionary?
-    var movieThumbnail: UIImage?
-    var moviePosters: NSDictionary?
+    var movieDetails: MovieModel?
     
-    //TODO: place in global place
-    var imageCache = [String : UIImage]()
-    
+    @IBOutlet weak var mpaaRating: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var moviePoster: UIImageView!
+    @IBOutlet weak var synopsisLabel: UILabel!
+
+    @IBOutlet weak var scrollViewContent: UIView!
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        mainScrollView.delegate = self
+        var sizer = CGSize(width: 320, height: 1000)
+        mainScrollView.contentSize = sizer
+        scrollViewContent.sizeThatFits(sizer)
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return scrollViewContent
+    }
+    func scrollViewDidScroll(scrollView: UIScrollView!) {
+        NSLog("view did scroll")
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView!) {
+        NSLog("view will begin dragging")
+
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView!,
+        willDecelerate decelerate: Bool) {
+           NSLog("user lifting finger")
+    }
+    
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+        // This method is called when the scrollview finally stops scrolling.
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        //moviePoster.setImageWithURL(<#url: NSURL!#>)
-        
-        if movieDetails != nil {
-            var movieTitle = movieDetails?["title"] as? String ?? "No title"
-            title = movieTitle
+        if let movieDetails = movieDetails {
+            title = movieDetails.title ?? "No title"
             
-            if movieThumbnail != nil{
-                moviePoster.image = movieThumbnail!
-            }
+            setSectionTitle(movieDetails)
             
-            moviePosters = movieDetails!["posters"] as NSDictionary?
-            var moviePosterUrl = moviePosters?["thumbnail"] as? String ?? ""
-
-            if moviePosterUrl != "" {
-                
-                let urlString = moviePosterUrl.stringByReplacingOccurrencesOfString("tmb", withString: "ori", options: NSStringCompareOptions.LiteralSearch, range: nil)
-        
-                var image = self.imageCache[urlString]
-                
-                let url = NSURL(string: urlString)
-                let urlSmall = NSURL(string: moviePosterUrl)
-                
-                //let request: NSURLRequest = NSURLRequest(URL: url!)
-                
-                if(image == nil){
-                    NSLog("Attempting to load image...")
-                    /*NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue(),completionHandler: {(response: NSURLResponse!,data: NSData!,error: NSError!) -> Void in
-                        if error == nil {
-                            dispatch_async(dispatch_get_main_queue(),{
-                                self.imageCache[urlString] = UIImage(data: data!)
-                                self.moviePoster.image = self.imageCache[urlString]
-                            })
-                        }else{
-                            NSLog("Image failed to load")
-                        }
-                    })*/
-                    moviePoster.setImageWithURL(urlSmall)
-                }else{
-                    NSLog("Loading image from cache...")
-                    dispatch_async(dispatch_get_main_queue(),{
-                        self.moviePoster.image = image
-                    })
-                }
+            synopsisLabel.text = movieDetails.synopsis
+            synopsisLabel.sizeToFit()
+            mainScrollView.sizeToFit()
+            
+            mpaaRating.text = movieDetails.mpaaRating
+            
+            setTomatometers(movieDetails)
+            
+            if let imgOriginalUrl = movieDetails.imgOriginalUrl {
+                moviePoster.setImageWithURL(imgOriginalUrl)
             }
         }else{
             title = "Uh oh!"
+        }
+    }
+    
+    func setSectionTitle(movieDetails: MovieModel){
+        movieTitle.text = movieDetails.title
+        if let year = movieDetails.year{
+            movieTitle.text = movieTitle.text! + " (" + String(year) + ")"
+        }
+    }
+    
+    func setTomatometers(movieDetails:MovieModel){
+        var ratingsText = [String]()
+        if let criticsScore = movieDetails.ratingCriticsScore{
+            ratingsText.append("Critics score: " + String(criticsScore))
+        }
+        if let audienceScore = movieDetails.ratingAudienceScore{
+            ratingsText.append("Audience score: " + String(audienceScore))
+        }
+        if(ratingsText.count > 0){
+            ratingLabel.text = ", ".join(ratingsText)
+        }else{
+            ratingLabel.text = "No ratings"
         }
     }
     
