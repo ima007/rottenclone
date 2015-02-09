@@ -27,13 +27,13 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 
 ### Walkthrough
 
-[gfycat link](http://gfycat.com/WanGrossHairstreakbutterfly)
-
 #### Screenshot of error message
 <img src="error.png" alt="Screenshot of error message" width="350">
 
 #### GIF (kinda large)
-<img src="rottendemo.gif" alt="Video Walkthrough" width="350">
+The gif is really large, so I recommend opening it in gfycat or in a new window
+[gfycat link](http://gfycat.com/WanGrossHairstreakbutterfly)
+<a href="rottendemo.gif">Link to image in repo</a>
 
 Credits
 ---------
