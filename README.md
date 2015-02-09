@@ -26,10 +26,10 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 - [X] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
-[GFY Cat link](http://gfycat.com/WanGrossHairstreakbutterfly)
+[gfycat link](http://gfycat.com/WanGrossHairstreakbutterfly)
 
-#### Webm
-![Video Walkthrough](http://giant.gfycat.com/WanGrossHairstreakbutterfly.webm)
+#### GIF (kinda large)
+![Video Walkthrough](rottendemo.gif)
 
 Credits
 ---------
