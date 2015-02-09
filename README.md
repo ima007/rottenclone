@@ -30,10 +30,11 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 [gfycat link](http://gfycat.com/WanGrossHairstreakbutterfly)
 
 #### Screenshot of error message
+<img src="error.png" alt="Screenshot of error message" style="width:350px;">
 ![Screenshot of error message](error.png|width=350px)
 
 #### GIF (kinda large)
-![Video Walkthrough](rottendemo.gif|width=350px)
+<img src="rottendemo.gif" alt="Video Walkthrough" style="width:350px;">
 
 Credits
 ---------
