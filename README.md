@@ -20,7 +20,7 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 - [X] For the larger poster, load the low-res first and switch to high-res when complete.
 - [X] All images should be cached in memory and disk
 - [ ] Implement segmented control to switch between list view and grid view. Hint: The segmented control should hide/show a UITableView and a UICollectionView
-- [X] Customize the highlight and selection effect of the cell.
+- [X] Customize the highlight and selection effect of the cell. (simply removed)
 - [X] Customize the navigation bar.
 - [X] Add a tab bar for Box Office and DVD.
 - [X] Add a search bar: pretty simple implementation of searching against the existing table view data.
@@ -32,7 +32,9 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 
 #### GIF (kinda large)
 The gif is really large, so I recommend opening it in gfycat or in a new window
+
 [gfycat link](http://gfycat.com/WanGrossHairstreakbutterfly)
+
 <a href="rottendemo.gif">Link to image in repo</a>
 
 Credits
