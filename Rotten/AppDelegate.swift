@@ -13,9 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        let mbConst = 1024 * 1024
+        let urlCache = NSURLCache(memoryCapacity: 2 * mbConst, diskCapacity: 100 * mbConst, diskPath: "moviecache")
+        NSURLCache.setSharedURLCache(urlCache)
+        
         return true
     }
 

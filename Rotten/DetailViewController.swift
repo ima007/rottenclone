@@ -43,11 +43,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidEndDragging(scrollView: UIScrollView!,
         willDecelerate decelerate: Bool) {
-           NSLog("user lifting finger")
+        NSLog("user lifting finger")
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
-        // This method is called when the scrollview finally stops scrolling.
+        NSLog("user stopping scrolling")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -60,15 +60,13 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             
             synopsisLabel.text = movieDetails.synopsis
             synopsisLabel.sizeToFit()
-            mainScrollView.sizeToFit()
             
             mpaaRating.text = movieDetails.mpaaRating
             
             setTomatometers(movieDetails)
             
-            if let imgOriginalUrl = movieDetails.imgOriginalUrl {
-                moviePoster.setImageWithURL(imgOriginalUrl)
-            }
+            moviePoster.setFadeImageWithUrl(movieDetails)
+
         }else{
             title = "Uh oh!"
         }
