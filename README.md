@@ -31,7 +31,6 @@ Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary o
 
 #### Screenshot of error message
 <img src="error.png" alt="Screenshot of error message" style="width:350px;">
-![Screenshot of error message](error.png|width=350px)
 
 #### GIF (kinda large)
 <img src="rottendemo.gif" alt="Video Walkthrough" style="width:350px;">
