@@ -28,13 +28,12 @@ enum ListType: Int {
 
 struct Urls{
     private static let RottenTomatoesURLString = "http://api.rottentomatoes.com/api/public/v1.0/lists/"
-    private static let YourApiKey = "efm9t24v3b3umg9j64vpxrjc"
     
     private static let MovieListOptions = ["box_office", "opening","upcoming","in_theaters"]
     private static let DvdListOptions = ["top_rentals", "new_releases", "upcoming", "current_releases"]
     
     private static func querystring(limit: Int) -> String{
-        return "".join([".json?limit=",String(limit),"&apikey=",YourApiKey])
+        return "".join([".json?limit=",String(limit),"&apikey=",NSBundle.mainBundle().objectForInfoDictionaryKey("ROTTEN_API_KEY") as NSString])
     }
     
     static func getMovieUrl(listType: ListType, limit: Int) -> String{
