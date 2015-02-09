@@ -55,11 +55,3 @@ extension UIImageView{
         
     }
 }
-
-extension Int {
-    var asString: String{
-        var formatter = NSNumberFormatter()
-        formatter.numberStyle = NSNumberFormatterStyle.DecimalStyle
-        return formatter.stringFromNumber(self)!
-    }
-}

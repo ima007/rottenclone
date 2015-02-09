@@ -2,7 +2,7 @@
 
 This is a movies app displaying box office and top rental DVDs using the [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: `<Number of hours spent>`
+Time spent: 10 on core, 6 on optional (a little more time than necessary on reseaching stuff)
 
 ### Features
 
@@ -20,10 +20,10 @@ Time spent: `<Number of hours spent>`
 - [X] For the larger poster, load the low-res first and switch to high-res when complete.
 - [X] All images should be cached in memory and disk
 - [ ] Implement segmented control to switch between list view and grid view. Hint: The segmented control should hide/show a UITableView and a UICollectionView
-- [ ] Customize the highlight and selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [X] Customize the highlight and selection effect of the cell.
+- [X] Customize the navigation bar.
 - [X] Add a tab bar for Box Office and DVD.
-- [ ] Add a search bar: pretty simple implementation of searching against the existing table view data.
+- [X] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
 ![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)

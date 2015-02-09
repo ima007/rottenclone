@@ -8,6 +8,12 @@
 
 import Foundation
 
+/*
+
+NOTE: Just playing around with enums, randomizing, and hacking in the Dvd endpoint...so terribly ugly...
+
+*/
+
 enum ListType: Int {
     case Top = 0,  New, Upcoming, Current
     
