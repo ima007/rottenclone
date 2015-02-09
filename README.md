@@ -2,7 +2,7 @@
 
 This is a movies app displaying box office and top rental DVDs using the [Rotten Tomatoes API](http://developer.rottentomatoes.com/docs/read/JSON).
 
-Time spent: 10 on core, 6 on optional (a little more time than necessary on reseaching stuff)
+Time spent: 10hrs on core, 6hrs on optional (a little more time than necessary on reseaching stuff)
 
 ### Features
 
@@ -11,7 +11,7 @@ Time spent: 10 on core, 6 on optional (a little more time than necessary on rese
 - [X] User can view a list of movies. Poster images load asynchronously.
 - [X] User can view movie details by tapping on a cell.
 - [X] User sees loading state while waiting for the API.
-- [X] User sees error message when there is a network error: http://cl.ly/image/1l1L3M460c3C
+- [X] User sees error message when there is a network error (mine programatically moves the view into the navigation bar controller, so it's fixed)
 - [X] User can pull to refresh the movie list. (Note: I made it choose a random sublist)
 
 #### Optional
@@ -26,7 +26,10 @@ Time spent: 10 on core, 6 on optional (a little more time than necessary on rese
 - [X] Add a search bar: pretty simple implementation of searching against the existing table view data.
 
 ### Walkthrough
-![Video Walkthrough](http://i.imgur.com/9d4fXIm.gif)
+[GFY Cat link](http://gfycat.com/WanGrossHairstreakbutterfly)
+
+#### Webm
+![Video Walkthrough](http://giant.gfycat.com/WanGrossHairstreakbutterfly.webm)
 
 Credits
 ---------
