@@ -38,6 +38,7 @@ The gif is really large, so I recommend opening it in gfycat or in a new window
 <a href="rottendemo.gif">Link to image in repo</a>
 
 ### Installation
+* Requires Xcode 6.2 beta 5
 * Retrieve a Rotten Tomatoes API key from http://developer.rottentomatoes.com
 * Create a folder called Config in the main folder (the one that contains the Podfile)
 * In the config folder, create MyConfig.xcconfig 
